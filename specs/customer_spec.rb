@@ -41,11 +41,28 @@ class CustomerTest < MiniTest::Test
     assert_equal(0, @customer.drunk)
   end
 
-  def test_buy_a_drink()
+  def test_can_afford_drink__true()
+      assert_equal(true, @customer.afford_drink?(@drink))
+  end
+
+  def test_can_afford_drink__false()
+    customer = Customer.new("Claire", 2, 33)
+    assert_equal(false, customer.afford_drink?(@drink))
+  end
+
+  def test_buy_a_drink__money_in_wallet()
     @customer.buy_a_drink(@drink, @pub)
     assert_equal(95, @customer.wallet)
     assert_equal(505, @pub.till)
     assert_equal(3, @pub.drink_collection.length)
+  end
+
+  def test_buy_a_drink__not_enough_money()
+    customer = Customer.new("Claire", 2, 33)
+    customer.buy_a_drink(@drink, @pub)
+    assert_equal(2, customer.wallet)
+    assert_equal(500, @pub.till)
+    assert_equal(4, @pub.drink_collection.length)
   end
 
   def test_customer_gets_more_drunk()

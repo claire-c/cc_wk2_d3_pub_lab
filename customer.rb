@@ -10,10 +10,16 @@ class Customer
     @drunk = 0
   end
 
+  def afford_drink?(drink)
+    @wallet > drink.price
+  end
+
   def buy_a_drink(drink, pub)
-    @wallet -= drink.price
-    pub.till += drink.price
-    pub.remove_drink_from_collection(drink)
+    if afford_drink?(drink) == true
+      @wallet -= drink.price
+      pub.till += drink.price
+      pub.remove_drink_from_collection(drink)
+    end
   end
 
   def gets_more_drunk(drink)
