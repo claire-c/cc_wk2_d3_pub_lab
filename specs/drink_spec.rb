@@ -17,18 +17,4 @@ class DrinkTest < MiniTest::Test
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 end
