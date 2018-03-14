@@ -6,7 +6,7 @@ class PubTest < MiniTest::Test
 
   def setup()
     @drink_collection = [
-      Drink.new("Whisky", 3),
+      Drink.new("Beer", 3),
       Drink.new("Beer", 5),
       Drink.new("Wine", 6),
       Drink.new("Gin", 4)

@@ -7,7 +7,7 @@ class CustomerTest < MiniTest::Test
 
   def setup
     @drink = Drink.new("Beer", 5)
-    @customer = Customer.new("Matthew", 100)
+    @customer = Customer.new("Matthew", 100, 25)
     @drink_collection = [
       Drink.new("Whisky", 3),
       Drink.new("Beer", 5),
@@ -25,6 +25,10 @@ class CustomerTest < MiniTest::Test
 
   def test_customer_wallet_contents()
     assert_equal(100, @customer.wallet)
+  end
+
+  def test_customer_age()
+    assert_equal(25, @customer.age)
   end
 
   def test_buy_a_drink()
