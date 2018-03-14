@@ -12,7 +12,7 @@ class PubTest < MiniTest::Test
       Drink.new("Whisky", 3, 4),
       Drink.new("Beer", 5, 2),
       Drink.new("Wine", 6, 3),
-      Drink.new("Gin", 4, 5)
+      Drink.new("Gin", 4, 8)
       ]
 
     @pub = Pub.new("Pubby McPubFace", 500, @drink_collection)
@@ -44,6 +44,18 @@ class PubTest < MiniTest::Test
   def test_pub_checks_customer_age__under18()
     customer = Customer.new("Matthew", 100, 16)
     result = @pub.check_age?(customer)
+    assert_equal(false, result)
+  end
+
+  def test_pub_refuse_service__refuses()
+    drink = Drink.new("Gin", 4, 8)
+    @customer.gets_more_drunk(drink)
+    result = @pub.refuse_service?(@customer)
+    assert_equal(true, result)
+  end
+
+  def test_pub_refuse_service__doesnt_refuse()
+    result = @pub.refuse_service?(@customer)
     assert_equal(false, result)
   end
 

@@ -1,22 +1,30 @@
 class Customer
 
   attr_reader :name, :wallet, :age
-  attr_accessor :drunkenness
+  attr_accessor :drunk
 
   def initialize(name, wallet, age)
     @name = name
     @wallet = wallet
     @age = age
-    @drunkenness = 0
+    @drunk = 0
   end
 
-def buy_a_drink(drink, pub)
-  @wallet -= drink.price
-  pub.till += drink.price
-  pub.remove_drink_from_collection(drink)
-end
+  def buy_a_drink(drink, pub)
+    @wallet -= drink.price
+    pub.till += drink.price
+    pub.remove_drink_from_collection(drink)
+  end
 
+  def gets_more_drunk(drink)
+    @drunk += drink.alcohol_level
+  end
 
+  def buys_food(food_to_buy)
+    @wallet -= food_to_buy.price
+    @drunk -= food_to_buy.rejuvenation_level
+  end
 
+  #How to I write this function to only go to 0 on my customer. Is there a way I can do this? Like set a default where it will only rejuvenate to 0?
 
 end

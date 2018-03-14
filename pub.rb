@@ -22,8 +22,9 @@ class Pub
     customer_to_check.age > 18
   end
 
-
-
+  def refuse_service?(customer_to_check)
+    customer_to_check.drunkenness > 5
+  end
 
 
 
