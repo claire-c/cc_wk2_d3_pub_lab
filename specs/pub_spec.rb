@@ -9,10 +9,10 @@ class PubTest < MiniTest::Test
     @customer = Customer.new("Matthew", 100, 25)
 
     @drink_collection = [
-      Drink.new("Beer", 3),
-      Drink.new("Beer", 5),
-      Drink.new("Wine", 6),
-      Drink.new("Gin", 4)
+      Drink.new("Whisky", 3, 4),
+      Drink.new("Beer", 5, 2),
+      Drink.new("Wine", 6, 3),
+      Drink.new("Gin", 4, 5)
       ]
 
     @pub = Pub.new("Pubby McPubFace", 500, @drink_collection)
@@ -31,7 +31,7 @@ class PubTest < MiniTest::Test
   end
 
   def test_remove_drink_from_collection()
-    drink = Drink.new("Beer", 5)
+    drink = Drink.new("Beer", 5, 2)
     @pub.remove_drink_from_collection(drink)
     assert_equal(3, @pub.drink_collection.length)
   end
