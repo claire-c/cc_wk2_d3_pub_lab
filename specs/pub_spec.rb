@@ -27,5 +27,11 @@ class PubTest < MiniTest::Test
     assert_equal(@drink_collection, @pub.drink_collection)
   end
 
+  def test_remove_drink_from_collection()
+    drink = Drink.new("Beer", 5)
+    @pub.remove_drink_from_collection(drink)
+    assert_equal(3, @pub.drink_collection.length)
+  end
+
 
 end
